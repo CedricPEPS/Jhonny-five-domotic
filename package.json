@@ -21,6 +21,7 @@
   "homepage": "https://github.com/jusolibre/Jhonny-five-domotic#readme",
   "dependencies": {
     "express": "^4.15.2",
+    "johnny-five": "^0.10.7",
     "nanotimer": "^0.3.14"
   }
 }
