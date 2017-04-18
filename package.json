@@ -4,7 +4,8 @@
   "description": "gestion de la domotic via jhonny-five",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,12 @@
     "express": "^4.15.2",
     "johnny-five": "^0.10.7",
     "nanotimer": "^0.3.14"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "sinon": "^2.1.0"
+  },
+  "directories": {
+    "test": "test"
   }
 }

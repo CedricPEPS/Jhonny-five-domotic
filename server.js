@@ -65,7 +65,7 @@ var pin = new five.Pin({
   })
 
 
-  app.get('/switch/on', function(req, res){
+  app.get('/plug/on', function(req, res){
 
      
 
@@ -77,7 +77,7 @@ plug.on();
 
 
 
-  app.get('/switch/off', function(req, res){
+  app.get('/plug/off', function(req, res){
 
      
 
