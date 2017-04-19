@@ -50,11 +50,16 @@ board.on("ready", function() {                      //connection à la board don
 
     plug.on();
     light.on();
+
+    res.json("ok");
   });
 
   app.get('/plug', function(req, res){
 
-    res.json(plug.isOn);
+    var result = plug.isOn;
+
+
+    res.json(result);
     // pin.read(function(error, value) {
     //   console.log(value);
     // });
@@ -69,27 +74,31 @@ board.on("ready", function() {                      //connection à la board don
   });
 
 
-  app.get('/plug/on', function(req, res){ 
+  app.post('/plug/on', function(req, res){ 
 
     plug.on();
+    res.json("ok");
 
   });
 
-  app.get('/plug/off', function(req, res){
+  app.post('/plug/off', function(req, res){
 
     plug.off();
+    res.json("ok");
     
   });
 
-  app.get('/light/on', function(req, res){
+  app.post('/light/on', function(req, res){
 
     light.on();
+    res.json("ok");
     
   });
 
-  app.get('/light/off', function(req, res){ 
+  app.post('/light/off', function(req, res){ 
 
     light.off();
+    res.json("ok");
     
   });
 

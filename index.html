@@ -25,7 +25,7 @@ body,
 html {
   height: 100%;
   font-family: 'Titillium Web', sans-serif;
-  background: #eee;
+  /*background: #eee;*/
 }
 
 /*--------------------
@@ -123,17 +123,17 @@ Switch
 <body style="background: gray;">
 	<div class="container" style="margin-top: 200px;">
 		<div class="col-md-12">
-			<div class="col-md-5 col-md-offset-1 text-center" id="plug" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-5 col-md-offset-1 text-center light" id="plug" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>Plug</h2>
-				<input type="checkbox" checked="checked" />
+				<input type="checkbox" name="plug" />
 				<div class="switch"></div>
-				<div class="light"></div>
+				<!-- <div class="light"></div> -->
 			</div>
-			<div class="col-md-5 col-md-offset-1 text-center" id="light" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-5 col-md-offset-1 text-center light" id="light" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>Light</h2>
-				<input type="checkbox" checked="checked" />
+				<input type="checkbox" name="light" />
 				<div class="switch"></div>
-				<div class="light"></div>
+				<!-- <div class="light"></div> -->
 			</div>
 		</div>
 	</div>
@@ -147,14 +147,14 @@ Switch
 			if(data == true){
 
 				$('#plug').css('background-color', 'green');
-				setTimeout(plugIsOn(), 500);
+				// setTimeout(plugIsOn(), 5000);
 
 
 
 			}else if(data == false){
 
 				$('#plug').css('background-color', 'red');
-				setTimeout(plugIsOn(), 500);
+				// setTimeout(plugIsOn(), 5000);
 
 			}
 		})
@@ -162,7 +162,7 @@ Switch
 
 
 			$('#plug').css('background-color', 'yellow');
-			setTimeout(plugIsOn(), 500);
+			// setTimeout(plugIsOn(), 5000);
 
 		})
 	}
@@ -175,14 +175,14 @@ Switch
 			if(data == true){
 
 				$('#light').css('background-color', 'green');
-				setTimeout(lightIsOn(), 500);
+				// setTimeout(lightIsOn(), 5000);
 
 
 
 			}else if(data == false){
 
 				$('#light').css('background-color', 'red');
-				setTimeout(lightIsOn(), 500);
+				// setTimeout(lightIsOn(), 5000);
 
 			}
 		})
@@ -190,11 +190,57 @@ Switch
 
 
 			$('#light').css('background-color', 'yellow');
-			setTimeout(lightIsOn(), 500);
+			// setTimeout(lightIsOn(), 5000);
 
 		})
 	}
 	lightIsOn();
+</script>
+<script>
+	$('input:checkbox[name=plug]').change(function(){
+		
+		// plugIsOn();
+		if($('input:checkbox[name=plug]').is(':checked')){
+			$.post( "http://localhost:8080/plug/on", function( data ) {
+  				// console.log(data);
+			}).fail(function(){
+				alert("une erreur s'est produite");
+			})
+		}
+		else{
+			$.post( "http://localhost:8080/plug/off", function( data ) {
+  				// console.log(data);
+  				
+			}).fail(function(){
+				alert("une erreur s'est produite");
+			})
+		}
+		plugIsOn();
+		
+	});
+</script>
+<script>
+	$('input:checkbox[name=light]').change(function(){
+		// lightIsOn();
+		
+		if($('input:checkbox[name=light]').is(':checked')){
+			$.post( "http://localhost:8080/light/on", function( data ) {
+  				// console.log(data);
+			}).fail(function(){
+				alert("une erreur s'est produite");
+			})
+		}
+		else{
+			$.post( "http://localhost:8080/light/off", function( data ) {
+  				// console.log(data);
+  				
+			}).fail(function(){
+				alert("une erreur s'est produite");
+			})
+		}
+		lightIsOn();
+		
+	});
 </script>
 
 </html>
