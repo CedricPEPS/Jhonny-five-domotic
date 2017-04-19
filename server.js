@@ -2,6 +2,9 @@ var five      = require("johnny-five");
 var board     = new five.Board();
 var express   = require ('express');
 var app       = express();
+var server = require('http').createServer(app);     
+//retourne une nouvelle instance de http.server
+var io = require('socket.io')(server);
 
 app.use(function(req, res, next) { 
   res.header("Access-Control-Allow-Origin", "*"); 
@@ -15,7 +18,7 @@ board.on("ready", function() {                      //connection à la board don
 
   console.log('Arduino is ready.');
 
-  // var unknow    = new five.Relay(11);                 // ID = relay sur pin 11.
+  var unknow    = new five.Led(11);                 // ID = relay sur pin 11.
   var plug      = new five.Relay({
                     pin: 10, 
                     type: "NO"
@@ -24,6 +27,7 @@ board.on("ready", function() {                      //connection à la board don
 
   plug.off();
   light.off();
+  unknow.off();
  
   var pin = new five.Pin({
     pin: 6,
@@ -35,6 +39,7 @@ board.on("ready", function() {                      //connection à la board don
 
     res.json(plug.isOn);
     res.json(light.isOn);
+    res.json(unknow.isOn);
     // pin.read(function(error, value) {
     //   console.log(value);
     // });
@@ -44,12 +49,14 @@ board.on("ready", function() {                      //connection à la board don
 
     plug.off();
     light.off();
+    unknow.off();
   });
 
    app.get('/all/on', function(req, res){
 
     plug.on();
     light.on();
+    unknow.on();
 
     res.json("ok");
   });
@@ -73,32 +80,54 @@ board.on("ready", function() {                      //connection à la board don
     // });
   });
 
+  app.get('/unknow', function(req, res){
+
+    res.json(unknow.isOn);
+    // pin.read(function(error, value) {
+    //   console.log(value);
+    // });
+  });
+
 
   app.post('/plug/on', function(req, res){ 
 
     plug.on();
-    res.json("ok");
+    res.json("ok on");
 
   });
 
   app.post('/plug/off', function(req, res){
 
     plug.off();
-    res.json("ok");
+    res.json("ok off");
     
   });
 
   app.post('/light/on', function(req, res){
 
     light.on();
-    res.json("ok");
+    res.json("ok on");
     
   });
 
   app.post('/light/off', function(req, res){ 
 
     light.off();
-    res.json("ok");
+    res.json("ok off");
+    
+  });
+
+  app.post('/unknow/on', function(req, res){
+
+    unknow.on();
+    res.json("ok on");
+    
+  });
+
+  app.post('/unknow/off', function(req, res){ 
+
+    unknow.off();
+    res.json("ok off");
     
   });
 

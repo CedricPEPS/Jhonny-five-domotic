@@ -123,15 +123,21 @@ Switch
 <body style="background: gray;">
 	<div class="container" style="margin-top: 200px;">
 		<div class="col-md-12">
-			<div class="col-md-5 col-md-offset-1 text-center light" id="plug" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-3 col-md-offset-1 text-center light" id="plug" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>Plug</h2>
 				<input type="checkbox" name="plug" />
 				<div class="switch"></div>
 				<!-- <div class="light"></div> -->
 			</div>
-			<div class="col-md-5 col-md-offset-1 text-center light" id="light" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-3 col-md-offset-1 text-center light" id="light" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>Light</h2>
 				<input type="checkbox" name="light" />
+				<div class="switch"></div>
+				<!-- <div class="light"></div> -->
+			</div>
+			<div class="col-md-3 col-md-offset-1 text-center light" id="unknow" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+				<h2>unknow</h2>
+				<input type="checkbox" name="unknow" />
 				<div class="switch"></div>
 				<!-- <div class="light"></div> -->
 			</div>
@@ -197,6 +203,34 @@ Switch
 	lightIsOn();
 </script>
 <script>
+	function unknowIsOn(){
+
+		$.getJSON("http://localhost:8080/unknow", function(data) {
+			if(data == true){
+
+				$('#unknow').css('background-color', 'green');
+				// setTimeout(plugIsOn(), 5000);
+
+
+
+			}else if(data == false){
+
+				$('#unknow').css('background-color', 'red');
+				// setTimeout(plugIsOn(), 5000);
+
+			}
+		})
+		.fail(function() { 
+
+
+			$('#unknow').css('background-color', 'yellow');
+			// setTimeout(plugIsOn(), 5000);
+
+		})
+	}
+	unknowIsOn();
+</script>
+<script>
 	$('input:checkbox[name=plug]').change(function(){
 		
 		// plugIsOn();
@@ -239,6 +273,29 @@ Switch
 			})
 		}
 		lightIsOn();
+		
+	});
+</script>
+<script>
+	$('input:checkbox[name=unknow]').change(function(){
+		
+		// plugIsOn();
+		if($('input:checkbox[name=unknow]').is(':checked')){
+			$.post( "http://localhost:8080/unknow/on", function( data ) {
+  				// console.log(data);
+			}).fail(function(){
+				alert("une erreur s'est produite");
+			})
+		}
+		else{
+			$.post( "http://localhost:8080/unknow/off", function( data ) {
+  				// console.log(data);
+  				
+			}).fail(function(){
+				alert("une erreur s'est produite");
+			})
+		}
+		unknowIsOn();
 		
 	});
 </script>
