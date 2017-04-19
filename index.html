@@ -123,24 +123,30 @@ Switch
 <body style="background: gray;">
 	<div class="container" style="margin-top: 200px;">
 		<div class="col-md-12">
-			<div class="col-md-3 col-md-offset-1 text-center light" id="plug" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-4  text-center light" id="plug" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>Plug</h2>
 				<input type="checkbox" name="plug" />
 				<div class="switch"></div>
 				<!-- <div class="light"></div> -->
 			</div>
-			<div class="col-md-3 col-md-offset-1 text-center light" id="light" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-4  text-center light" id="light" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>Light</h2>
 				<input type="checkbox" name="light" />
 				<div class="switch"></div>
 				<!-- <div class="light"></div> -->
 			</div>
-			<div class="col-md-3 col-md-offset-1 text-center light" id="unknow" style="height: 400px; border: 1px solid black; border-radius: 8px;">
+			<div class="col-md-4 text-center light" id="unknow" style="height: 400px; border: 1px solid black; border-radius: 8px;">
 				<h2>unknow</h2>
 				<input type="checkbox" name="unknow" />
 				<div class="switch"></div>
 				<!-- <div class="light"></div> -->
 			</div>
+		<div class="col-md-12  text-center light" id="all" style="height: 200px; margin-top: 30px; border: 1px solid black; border-radius: 8px; ">
+			<h2>All</h2>
+			<input type="checkbox" name="all" />
+			<div class="switch"></div>
+			<!-- <div class="light"></div> -->
+		</div>
 		</div>
 	</div>
 </body>
@@ -153,6 +159,7 @@ Switch
 			if(data == true){
 
 				$('#plug').css('background-color', 'green');
+				$("input[name=plug]").prop("checked",true);
 				// setTimeout(plugIsOn(), 5000);
 
 
@@ -160,6 +167,7 @@ Switch
 			}else if(data == false){
 
 				$('#plug').css('background-color', 'red');
+				$("input[name=plug]").prop("checked",false);
 				// setTimeout(plugIsOn(), 5000);
 
 			}
@@ -168,6 +176,7 @@ Switch
 
 
 			$('#plug').css('background-color', 'yellow');
+			$("input[name=plug]").prop("checked",false);
 			// setTimeout(plugIsOn(), 5000);
 
 		})
@@ -181,6 +190,7 @@ Switch
 			if(data == true){
 
 				$('#light').css('background-color', 'green');
+				$("input[name=light]").prop("checked",true);
 				// setTimeout(lightIsOn(), 5000);
 
 
@@ -188,6 +198,7 @@ Switch
 			}else if(data == false){
 
 				$('#light').css('background-color', 'red');
+				$("input[name=light]").prop("checked",false);
 				// setTimeout(lightIsOn(), 5000);
 
 			}
@@ -196,6 +207,7 @@ Switch
 
 
 			$('#light').css('background-color', 'yellow');
+			$("input[name=light]").prop("checked",false);
 			// setTimeout(lightIsOn(), 5000);
 
 		})
@@ -209,6 +221,7 @@ Switch
 			if(data == true){
 
 				$('#unknow').css('background-color', 'green');
+				$("input[name=unknow]").prop("checked",true);
 				// setTimeout(plugIsOn(), 5000);
 
 
@@ -216,6 +229,7 @@ Switch
 			}else if(data == false){
 
 				$('#unknow').css('background-color', 'red');
+				$("input[name=unknow]").prop("checked",false);
 				// setTimeout(plugIsOn(), 5000);
 
 			}
@@ -224,12 +238,30 @@ Switch
 
 
 			$('#unknow').css('background-color', 'yellow');
+			$("input[name=unknow]").prop("checked",false);
 			// setTimeout(plugIsOn(), 5000);
 
 		})
 	}
 	unknowIsOn();
 </script>
+<script>
+function allIsOn(){
+	if($('input:checkbox[name=plug]').is(':checked')&& $('input:checkbox[name=light]').is(':checked')&& $('input:checkbox[name=unknow]').is(':checked')){
+
+		$('#all').css('background-color', 'green');
+		$("input[name=all]").prop("checked",true);
+				
+		}
+	else{	
+
+		$('#all').css('background-color', 'yellow');
+		$("input[name=all]").prop("checked",false);
+	
+	}
+}
+allIsOn();
+</script> 
 <script>
 	$('input:checkbox[name=plug]').change(function(){
 		
@@ -250,6 +282,7 @@ Switch
 			})
 		}
 		plugIsOn();
+		allIsOn();
 		
 	});
 </script>
@@ -273,6 +306,7 @@ Switch
 			})
 		}
 		lightIsOn();
+		allIsOn();
 		
 	});
 </script>
@@ -296,8 +330,72 @@ Switch
 			})
 		}
 		unknowIsOn();
+		allIsOn();
 		
 	});
+</script>
+<script>
+	$('input:checkbox[name=all]').click(function(){
+		
+		
+		if($('input:checkbox[name=all]').is(':checked')){
+			$.post( "http://localhost:8080/all/on", function( data ) {
+  				$("input[name=plug]").prop("checked",true);
+  				$("input[name=light]").prop("checked",true);
+  				$("input[name=unknow]").prop("checked",true);
+			}).fail(function(){
+				alert("une erreur s'");
+			})
+			
+		}
+		else{
+   			$("input[name=plug]").prop("checked",false);
+  			$("input[name=light]").prop("checked",false);
+  			$("input[name=unknow]").prop("checked",false);
+			$.post( "http://localhost:8080/all/off", function( data ) {
+  				console.log(data);
+			}).fail(function(){
+				alert("une erreur");
+			});
+  			
+		}
+		plugIsOn();
+		lightIsOn();
+		unknowIsOn();
+		allIsOn();
+		
+	});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+
+<script>
+	// (function() {
+	// 	var socket = io.connect(window.location.hostname + ':' + 8080);
+		// var plugIs = document.getElementByName('plug');
+		// var lightIs = document.getElementByName('light');
+		// var unknowIs = document.getElementByName('unknow');
+
+		// function emitValue(plugIs, lightIs, unknowIs) {			
+		// 	socket.emit('etat', {
+		// 		plug: plugIs,
+		// 		light: lightIs,
+		// 		unknow: unknowIs
+		// 	});
+		// }
+
+		// plugIs.addEventListener('change', emitValue.bind(null, 'plug'));		
+		// unknowIs.addEventListener('change', emitValue.bind(null, 'unknow'));
+		// lightIs.addEventListener('change', emitValue.bind(null, 'light'));
+
+
+	// 	socket.on('connect', function(data) {					//connection du socket
+	// 		socket.emit('join', 'Client is connected!');		//envoie des données pour valider la connection
+	// 	});
+
+	// 	socket.on('etat', function(data) {						
+			
+	// 	});
+	// }());
 </script>
 
 </html>

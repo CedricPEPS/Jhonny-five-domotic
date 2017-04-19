@@ -45,20 +45,21 @@ board.on("ready", function() {                      //connection à la board don
     // });
   });
 
-  app.get('/all/off', function(req, res){
+  app.post('/all/off', function(req, res){
 
     plug.off();
     light.off();
     unknow.off();
+    res.json("ok off");
   });
 
-   app.get('/all/on', function(req, res){
+   app.post('/all/on', function(req, res){
 
     plug.on();
     light.on();
     unknow.on();
 
-    res.json("ok");
+    res.json("ok on");
   });
 
   app.get('/plug', function(req, res){
@@ -135,6 +136,16 @@ board.on("ready", function() {                      //connection à la board don
     relay: plug
   });
 });
+// io.on('connection', function(client) {        //connection du socket
+//     client.on('join', function(handshake) {     //réception de l'html pour validation de la connection
+//       console.log(handshake);
+//       console.log(plug.isOn);
+//       socket.emit('etat', {
+//         plug : plug.isOn,
+//         light : light.isOn,
+//         unknow : unknow.isOn
+//       });
+//     });
 
 var port = process.env.PORT || 8080;                //regarde l'environnement et process du port 8080
 
