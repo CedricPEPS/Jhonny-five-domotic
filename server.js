@@ -35,11 +35,16 @@ board.on("ready", function() {                      //connection à la board don
     mode: "input"
   });
 
-  app.get('/relays', function(req, res){
+  app.get('/check', function(req, res){
 
-    res.json(plug.isOn);
-    res.json(light.isOn);
-    res.json(unknow.isOn);
+    var check = {
+      "plug" : plug.isOn,
+      "light": light.isOn,
+      "unknow": unknow.isOn
+    } 
+
+    res.json(check);
+
     // pin.read(function(error, value) {
     //   console.log(value);
     // });
