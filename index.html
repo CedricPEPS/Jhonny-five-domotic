@@ -181,9 +181,12 @@ Switch
 
 		})
 	}
+
+
+
+
 	plugIsOn();
-</script>
-<script>
+
 	function lightIsOn(){
 
 		$.getJSON("http://localhost:8080/light", function(data) {
@@ -212,9 +215,13 @@ Switch
 
 		})
 	}
+
+
 	lightIsOn();
-</script>
-<script>
+
+
+
+
 	function unknowIsOn(){
 
 		$.getJSON("http://localhost:8080/unknow", function(data) {
@@ -243,26 +250,29 @@ Switch
 
 		})
 	}
+
+
+
 	unknowIsOn();
-</script>
-<script>
-function allIsOn(){
-	if($('input:checkbox[name=plug]').is(':checked')&& $('input:checkbox[name=light]').is(':checked')&& $('input:checkbox[name=unknow]').is(':checked')){
 
-		$('#all').css('background-color', 'green');
-		$("input[name=all]").prop("checked",true);
-				
+
+
+	function allIsOn(){
+		if($('input:checkbox[name=plug]').is(':checked') && $('input:checkbox[name=light]').is(':checked')&& $('input:checkbox[name=unknow]').is(':checked')){
+
+			$('#all').css('background-color', 'green');
+			$("input[name=all]").prop("checked",true);
+					
+			}
+		else{	
+
+			$('#all').css('background-color', 'yellow');
+			$("input[name=all]").prop("checked",false);
+		
 		}
-	else{	
-
-		$('#all').css('background-color', 'yellow');
-		$("input[name=all]").prop("checked",false);
-	
 	}
-}
-allIsOn();
-</script> 
-<script>
+	allIsOn();
+
 	$('input:checkbox[name=plug]').change(function(){
 		
 		// plugIsOn();
@@ -270,7 +280,7 @@ allIsOn();
 			$.post( "http://localhost:8080/plug/on", function( data ) {
   				// console.log(data);
 			}).fail(function(){
-				alert("une erreur s'est produite");
+				alert("Problème de connexion à la board");
 			})
 		}
 		else{
@@ -278,15 +288,14 @@ allIsOn();
   				// console.log(data);
   				
 			}).fail(function(){
-				alert("une erreur s'est produite");
+				alert("Problème de connexion à la board");
 			})
 		}
 		plugIsOn();
 		allIsOn();
 		
 	});
-</script>
-<script>
+
 	$('input:checkbox[name=light]').change(function(){
 		// lightIsOn();
 		
@@ -294,7 +303,7 @@ allIsOn();
 			$.post( "http://localhost:8080/light/on", function( data ) {
   				// console.log(data);
 			}).fail(function(){
-				alert("une erreur s'est produite");
+				alert("Problème de connexion à la board");
 			})
 		}
 		else{
@@ -302,15 +311,14 @@ allIsOn();
   				// console.log(data);
   				
 			}).fail(function(){
-				alert("une erreur s'est produite");
+				alert("Problème de connexion à la board");
 			})
 		}
 		lightIsOn();
 		allIsOn();
 		
 	});
-</script>
-<script>
+
 	$('input:checkbox[name=unknow]').change(function(){
 		
 		// plugIsOn();
@@ -318,7 +326,7 @@ allIsOn();
 			$.post( "http://localhost:8080/unknow/on", function( data ) {
   				// console.log(data);
 			}).fail(function(){
-				alert("une erreur s'est produite");
+				alert("Problème de connexion à la board");
 			})
 		}
 		else{
@@ -326,17 +334,16 @@ allIsOn();
   				// console.log(data);
   				
 			}).fail(function(){
-				alert("une erreur s'est produite");
+				alert("Problème de connexion à la board");
 			})
 		}
 		unknowIsOn();
 		allIsOn();
 		
 	});
-</script>
-<script>
-	$('input:checkbox[name=all]').click(function(){
-		
+
+	$('input:checkbox[name=all]').change(function(){
+
 		
 		if($('input:checkbox[name=all]').is(':checked')){
 			$.post( "http://localhost:8080/all/on", function( data ) {
@@ -344,18 +351,19 @@ allIsOn();
   				$("input[name=light]").prop("checked",true);
   				$("input[name=unknow]").prop("checked",true);
 			}).fail(function(){
-				alert("une erreur s'");
+				alert("Problème de connexion à la board");
 			})
 			
 		}
 		else{
+			
    			$("input[name=plug]").prop("checked",false);
   			$("input[name=light]").prop("checked",false);
   			$("input[name=unknow]").prop("checked",false);
 			$.post( "http://localhost:8080/all/off", function( data ) {
   				console.log(data);
 			}).fail(function(){
-				alert("une erreur");
+				alert("Problème de connexion à la board");
 			});
   			
 		}
