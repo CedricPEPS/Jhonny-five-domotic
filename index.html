@@ -18,107 +18,107 @@ Body
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body,
 html {
-  height: 100%;
-  font-family: 'Titillium Web', sans-serif;
-  /*background: #eee;*/
+	height: 100%;
+	font-family: 'Titillium Web', sans-serif;
+	/*background: #eee;*/
 }
 
 /*--------------------
 Switch
 --------------------*/
 [type="checkbox"] {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition: all .05s ease-in-out;
-  transition: all .05s ease-in-out;
-  width: 50px;
-  height: 80px;
-  z-index: 2;
-  opacity: 0.001;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition: all .05s ease-in-out;
+	transition: all .05s ease-in-out;
+	width: 50px;
+	height: 80px;
+	z-index: 2;
+	opacity: 0.001;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
 }
 [type="checkbox"] ~ .switch {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition: all .05s ease-in-out;
-  transition: all .05s ease-in-out;
-  width: 50px;
-  height: 80px;
-  border-radius: 12px;
-  background: -webkit-linear-gradient(top, #d2d4d6, #fff);
-  background: linear-gradient(to bottom, #d2d4d6, #fff);
-  box-shadow: inset 0 -2px 4px rgba(212, 205, 199, 0.75), inset 0 -8px 0 1px rgba(156, 156, 157, 0.85), 0 0 0 1px rgba(116, 116, 118, 0.8), 0 6px 6px rgba(41, 41, 41, 0.3), 0 0 0 4px #d4d7d8;
-  -webkit-filter: contrast(1);
-          filter: contrast(1);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition: all .05s ease-in-out;
+	transition: all .05s ease-in-out;
+	width: 50px;
+	height: 80px;
+	border-radius: 12px;
+	background: -webkit-linear-gradient(top, #d2d4d6, #fff);
+	background: linear-gradient(to bottom, #d2d4d6, #fff);
+	box-shadow: inset 0 -2px 4px rgba(212, 205, 199, 0.75), inset 0 -8px 0 1px rgba(156, 156, 157, 0.85), 0 0 0 1px rgba(116, 116, 118, 0.8), 0 6px 6px rgba(41, 41, 41, 0.3), 0 0 0 4px #d4d7d8;
+	-webkit-filter: contrast(1);
+	filter: contrast(1);
 }
 [type="checkbox"] ~ .switch::before, [type="checkbox"] ~ .switch::after {
-  content: 'on';
-  position: absolute;
-  left: 0;
-  bottom: 11px;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 9px;
-  width: 100%;
-  text-align: center;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  -webkit-transition: all .05s ease-in-out;
-  transition: all .05s ease-in-out;
+	content: 'on';
+	position: absolute;
+	left: 0;
+	bottom: 11px;
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 9px;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	-webkit-transition: all .05s ease-in-out;
+	transition: all .05s ease-in-out;
 }
 [type="checkbox"] ~ .switch::after {
-  content: 'off';
-  bottom: auto;
-  top: 5px;
-  color: rgba(0, 0, 0, 0.45);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	content: 'off';
+	bottom: auto;
+	top: 5px;
+	color: rgba(0, 0, 0, 0.45);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 [type="checkbox"]:checked ~ .switch {
-  background: -webkit-linear-gradient(top, #a1a2a3, #f0f0f0);
-  background: linear-gradient(to bottom, #a1a2a3, #f0f0f0);
-  box-shadow: inset 0 2px 4px rgba(212, 205, 199, 0.75), inset 0 8px 0 1px rgba(255, 255, 255, 0.77), 0 0 0 1px rgba(116, 116, 118, 0.8), 0 -2px 2px rgba(41, 41, 41, 0.18), 0 0 0 4px #d4d7d8;
-  -webkit-filter: none;
-          filter: none;
+	background: -webkit-linear-gradient(top, #a1a2a3, #f0f0f0);
+	background: linear-gradient(to bottom, #a1a2a3, #f0f0f0);
+	box-shadow: inset 0 2px 4px rgba(212, 205, 199, 0.75), inset 0 8px 0 1px rgba(255, 255, 255, 0.77), 0 0 0 1px rgba(116, 116, 118, 0.8), 0 -2px 2px rgba(41, 41, 41, 0.18), 0 0 0 4px #d4d7d8;
+	-webkit-filter: none;
+	filter: none;
 }
 [type="checkbox"]:checked ~ .switch::before {
-  bottom: 3px;
-  color: rgba(0, 0, 0, 0.5);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	bottom: 3px;
+	color: rgba(0, 0, 0, 0.5);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 [type="checkbox"]:checked ~ .switch::after {
-  top: 13px;
-  color: rgba(0, 0, 0, 0.45);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+	top: 13px;
+	color: rgba(0, 0, 0, 0.45);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 [type="checkbox"] ~ .light {
-  background: #0a0a16;
-  opacity: 0.7;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 2;
+	background: #0a0a16;
+	opacity: 0.7;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	mix-blend-mode: multiply;
+	pointer-events: none;
+	z-index: 2;
 }
 [type="checkbox"]:checked ~ .light {
-  opacity: 0;
+	opacity: 0;
 }
 
-	</style>
+</style>
 </head>
 <body style="background: gray;">
 	<div class="container" style="margin-top: 200px;">
@@ -141,18 +141,19 @@ Switch
 				<div class="switch"></div>
 				<!-- <div class="light"></div> -->
 			</div>
-		<div class="col-md-12  text-center light" id="all" style="height: 200px; margin-top: 30px; border: 1px solid black; border-radius: 8px; ">
-			<h2>All</h2>
-			<input type="checkbox" name="all" />
-			<div class="switch"></div>
-			<!-- <div class="light"></div> -->
-		</div>
+			<div class="col-md-12  text-center light" id="all" style="height: 200px; margin-top: 30px; border: 1px solid black; border-radius: 8px; ">
+				<h2>All</h2>
+				<input type="checkbox" name="all" />
+				<div class="switch"></div>
+				<!-- <div class="light"></div> -->
+			</div>
 		</div>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <script>
+	allIsOn();
 	function plugIsOn(){
 
 		$.getJSON("http://localhost:8080/plug", function(data) {
@@ -186,6 +187,7 @@ Switch
 
 
 	plugIsOn();
+	allIsOn();
 
 	function lightIsOn(){
 
@@ -218,6 +220,7 @@ Switch
 
 
 	lightIsOn();
+	allIsOn();
 
 
 
@@ -254,6 +257,7 @@ Switch
 
 
 	unknowIsOn();
+	allIsOn();
 
 
 
@@ -262,13 +266,13 @@ Switch
 
 			$('#all').css('background-color', 'green');
 			$("input[name=all]").prop("checked",true);
-					
-			}
+			
+		}
 		else{	
 
 			$('#all').css('background-color', 'yellow');
 			$("input[name=all]").prop("checked",false);
-		
+			
 		}
 	}
 	allIsOn();
@@ -279,22 +283,22 @@ Switch
 		if($('input:checkbox[name=plug]').is(':checked')){
 			$.post( "http://localhost:8080/plug/on", function( data ) {
   				// console.log(data);
-			}).fail(function(){
-				alert("Problème de connexion à la board");
-			})
-		}
-		else{
-			$.post( "http://localhost:8080/plug/off", function( data ) {
+  			}).fail(function(){
+  				alert("Problème de connexion à la board");
+  			})
+  		}
+  		else{
+  			$.post( "http://localhost:8080/plug/off", function( data ) {
   				// console.log(data);
   				
-			}).fail(function(){
-				alert("Problème de connexion à la board");
-			})
-		}
-		plugIsOn();
-		allIsOn();
-		
-	});
+  			}).fail(function(){
+  				alert("Problème de connexion à la board");
+  			})
+  		}
+  		plugIsOn();
+  		allIsOn();
+  		
+  	});
 
 	$('input:checkbox[name=light]').change(function(){
 		// lightIsOn();
@@ -302,22 +306,22 @@ Switch
 		if($('input:checkbox[name=light]').is(':checked')){
 			$.post( "http://localhost:8080/light/on", function( data ) {
   				// console.log(data);
-			}).fail(function(){
-				alert("Problème de connexion à la board");
-			})
-		}
-		else{
-			$.post( "http://localhost:8080/light/off", function( data ) {
+  			}).fail(function(){
+  				alert("Problème de connexion à la board");
+  			})
+  		}
+  		else{
+  			$.post( "http://localhost:8080/light/off", function( data ) {
   				// console.log(data);
   				
-			}).fail(function(){
-				alert("Problème de connexion à la board");
-			})
-		}
-		lightIsOn();
-		allIsOn();
-		
-	});
+  			}).fail(function(){
+  				alert("Problème de connexion à la board");
+  			})
+  		}
+  		lightIsOn();
+  		allIsOn();
+  		
+  	});
 
 	$('input:checkbox[name=unknow]').change(function(){
 		
@@ -325,31 +329,33 @@ Switch
 		if($('input:checkbox[name=unknow]').is(':checked')){
 			$.post( "http://localhost:8080/unknow/on", function( data ) {
   				// console.log(data);
-			}).fail(function(){
-				alert("Problème de connexion à la board");
-			})
-		}
-		else{
-			$.post( "http://localhost:8080/unknow/off", function( data ) {
+  			}).fail(function(){
+  				alert("Problème de connexion à la board");
+  			})
+  		}
+  		else{
+  			$.post( "http://localhost:8080/unknow/off", function( data ) {
   				// console.log(data);
   				
-			}).fail(function(){
-				alert("Problème de connexion à la board");
-			})
-		}
-		unknowIsOn();
-		allIsOn();
-		
-	});
+  			}).fail(function(){
+  				alert("Problème de connexion à la board");
+  			})
+  		}
+  		unknowIsOn();
+  		allIsOn();
+  		
+  	});
 
 	$('input:checkbox[name=all]').change(function(){
 
 		
+
 		if($('input:checkbox[name=all]').is(':checked')){
 			$.post( "http://localhost:8080/all/on", function( data ) {
-  				$("input[name=plug]").prop("checked",true);
-  				$("input[name=light]").prop("checked",true);
-  				$("input[name=unknow]").prop("checked",true);
+				$('#all').css('background-color', 'green');
+				$("input[name=plug]").prop("checked",true);
+				$("input[name=light]").prop("checked",true);
+				$("input[name=unknow]").prop("checked",true);
 			}).fail(function(){
 				alert("Problème de connexion à la board");
 			})
@@ -357,15 +363,15 @@ Switch
 		}
 		else{
 			
-   			$("input[name=plug]").prop("checked",false);
-  			$("input[name=light]").prop("checked",false);
-  			$("input[name=unknow]").prop("checked",false);
+			$("input[name=plug]").prop("checked",false);
+			$("input[name=light]").prop("checked",false);
+			$("input[name=unknow]").prop("checked",false);
 			$.post( "http://localhost:8080/all/off", function( data ) {
-  				console.log(data);
+				console.log(data);
 			}).fail(function(){
 				alert("Problème de connexion à la board");
 			});
-  			
+			
 		}
 		plugIsOn();
 		lightIsOn();
@@ -401,7 +407,7 @@ Switch
 	// 	});
 
 	// 	socket.on('etat', function(data) {						
-			
+		
 	// 	});
 	// }());
 </script>
